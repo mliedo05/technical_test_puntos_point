@@ -1,4 +1,5 @@
 class Clients::Create
+  attr_reader :params
   def initialize(params)
     @params = params
   end
@@ -6,7 +7,7 @@ class Clients::Create
   def call
     return client_exists_response if client_exists?
 
-    client = Client.new(@params)
+    client = Client.new(params)
     if client.save
       success_response(client)
     else
@@ -16,7 +17,7 @@ class Clients::Create
 
 
   def client_exists?
-    @existing_client = Client.find_by(email: @params[:email])
+    @existing_client = Client.find_by(email: params[:email])
   end
 
   def client_exists_response
