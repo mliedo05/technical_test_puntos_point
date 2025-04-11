@@ -1,21 +1,18 @@
-class Api::V1::ClientsController < ApplicationController
+class Api::V1::CategoriesController < ApplicationController
   before_action :authenticate_user_from_token!, only: %i[ index ] 
-  before_action :set_client, only: %i[ show edit update destroy ]
-
-  # GET /api/v1/clients
+  before_action :set_category, only: %i[ show update destroy ]
+  
   def index
-    clients = Client.all
-    render json: clients, status: :ok
+    categories = Category.all
+    render json: categories, status: :ok
   end
 
-  # GET /api/v1/clients/:id
   def show
-    render json: client, status: :ok
+    render json: category, status: :ok
   end
 
-  # POST /api/v1/clients
   def create
-    service = Clients::Create.new(client_params).call
+    service = Categories::Create.new(category_params).call
     if service[:success]
       render json: service[:data], status: :created
     else
@@ -23,9 +20,8 @@ class Api::V1::ClientsController < ApplicationController
     end
   end
 
-  # PUT /api/v1/clients/:id
   def update
-    service = Clients::Update.new(@client, client_params).call
+    service = Categories::Update.new(@category, category_params).call
     if service[:success]
       render json: service[:data], status: :ok
     else
@@ -34,7 +30,7 @@ class Api::V1::ClientsController < ApplicationController
   end
 
   def destroy
-    service = Clients::Destroy.new(@client).call
+    service = Categories::Destroy.new(@category).call
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
@@ -44,14 +40,15 @@ class Api::V1::ClientsController < ApplicationController
 
   private
 
-  def client_params
-    params.require(:client).permit(:name, :email, :phone, :address)
+  def category_params
+    params.require(:category).permit(:name, :description, :admin_id)
   end
 
-  def set_client
-    @client = Client.find_by(id: params[:id])
-    unless @client
-      render json: { error: "Client not found" }, status: :not_found
+  def set_category
+    @category = Category.find_by(id: params[:id])
+    unless @category
+      render json: { error: "Category not found" }, status: :not_found
     end
   end
+
 end
