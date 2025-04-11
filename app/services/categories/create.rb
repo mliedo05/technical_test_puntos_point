@@ -1,4 +1,5 @@
 class Categories::Create
+  attr_reader :params
   def initialize(params)
     @params = params
   end
@@ -6,7 +7,7 @@ class Categories::Create
   def call
     return category_exists_response if category_exists?
 
-    category = Category.new(@params)
+    category = Category.new(params)
     if category.save
       success_response(category)
     else
@@ -16,7 +17,7 @@ class Categories::Create
 
 
   def category_exists?
-    normalized_name = @params[:name].to_s.strip.downcase.capitalize
+    normalized_name = params[:name].to_s.strip.downcase.capitalize
     @existing_category = Category.find_by(name: normalized_name)
   end  
 

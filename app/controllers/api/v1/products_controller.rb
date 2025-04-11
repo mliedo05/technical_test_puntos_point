@@ -1,18 +1,18 @@
-class Api::V1::CategoriesController < ApplicationController
+class Api::V1::ProductsController < ApplicationController
   before_action :authenticate_user_from_token!, only: %i[ update destroy create ] 
-  before_action :set_category, only: %i[ show update destroy ]
+  before_action :set_product, only: %i[ show update destroy ]
   
   def index
-    categories = Category.all
-    render json: categories, status: :ok
+    products = Product.all
+    render json: products, status: :ok
   end
 
   def show
-    render json: category, status: :ok
+    render json: product, status: :ok
   end
 
   def create
-    service = Categories::Create.new(category_params).call
+    service = Products::Create.new(product_params).call
     if service[:success]
       render json: service[:data], status: :created
     else
@@ -21,7 +21,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def update
-    service = Categories::Update.new(@category, category_params).call
+    service = Products::Update.new(@product, product_params).call
     if service[:success]
       render json: service[:data], status: :ok
     else
@@ -30,7 +30,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def destroy
-    service = Categories::Destroy.new(@category).call
+    service = Products::Destroy.new(@product).call
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
@@ -40,14 +40,14 @@ class Api::V1::CategoriesController < ApplicationController
 
   private
 
-  def category_params
-    params.require(:category).permit(:name, :description, :admin_id)
+  def product_params
+    params.permit(:name, :description, :price, :stock, :admin_id, category_ids: [], images: [])
   end
 
-  def set_category
-    @category = Category.find_by(id: params[:id])
-    unless @category
-      render json: { error: "Category not found" }, status: :not_found
+  def set_product
+    @product = Product.find_by(id: params[:id])
+    unless @product
+      render json: { error: "product not found" }, status: :not_found
     end
   end
 
