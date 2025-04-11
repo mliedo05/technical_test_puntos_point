@@ -70,6 +70,8 @@ ActiveRecord::Schema.define(version: 2025_04_11_151703) do
   create_table "product_categories", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_product_categories_on_category_id"
     t.index ["product_id"], name: "index_product_categories_on_product_id"
   end
