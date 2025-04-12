@@ -20,7 +20,6 @@ class Categories::Destroy
   end
 
   def category_not_found_response
-    byebug
     {
       success: false,
       message: "category not found.",

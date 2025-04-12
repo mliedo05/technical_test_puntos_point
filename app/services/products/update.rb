@@ -17,8 +17,8 @@ class Products::Update
   private
 
   def update_categories
-    categories = Category.where(id: params[:category_ids])
-    @product.categories = categories
+    new_categories = Category.where(id: params[:category_ids])
+    @product.categories << new_categories.reject { |cat| @product.categories.include?(cat) }
   end
 
   def success_response(product)

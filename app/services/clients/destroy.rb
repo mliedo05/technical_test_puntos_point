@@ -20,7 +20,6 @@ class Clients::Destroy
   end
 
   def client_not_found_response
-    byebug
     {
       success: false,
       message: "Client not found.",

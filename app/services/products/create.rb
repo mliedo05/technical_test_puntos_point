@@ -8,8 +8,7 @@ class Products::Create
     return product_exists_response if product_exists?
 
     product = Product.new(params)
-    byebug
-    if product.save
+    if product.save!
       success_response(product)
     else
       failure_response(product)
