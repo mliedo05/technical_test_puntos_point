@@ -20,7 +20,6 @@ class Products::Destroy
   end
 
   def product_not_found_response
-    byebug
     {
       success: false,
       message: "product not found.",

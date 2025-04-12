@@ -1,6 +1,6 @@
 class Api::V1::ProductsController < ApplicationController
-  before_action :authenticate_user_from_token!, only: %i[ update destroy create ] 
-  before_action :set_product, only: %i[ show update destroy ]
+  before_action :authenticate_user_from_token!, only: %i[ update destroy create remove_category ] 
+  before_action :set_product, only: %i[ show update destroy remove_category ]
   
   def index
     products = Product.all
@@ -8,7 +8,11 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def show
-    render json: product, status: :ok
+    if @product
+      render json: @product.as_json(include: { categories: { only: [:id, :name] } }), status: :ok
+    else
+      render json: { error: "Product not found" }, status: :not_found
+    end
   end
 
   def create
@@ -38,10 +42,24 @@ class Api::V1::ProductsController < ApplicationController
     end
   end
 
+  def remove_category
+    category = Category.find(params[:category_id])
+    if @product.categories.include?(category)
+      @product.categories.delete(category)
+      render json: { message: "Category removed successfully." }, status: :ok
+    else
+      render json: { message: "This category is not associated with the product." }, status: :unprocessable_entity
+    end
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: "Product or category not found." }, status: :not_found
+  end
+  
+  
+
   private
 
   def product_params
-    params.permit(:name, :description, :price, :stock, :admin_id, category_ids: [], images: [])
+    params.require(:product).permit(:name, :description, :price, :stock, :admin_id, category_ids: [], images: [])
   end
 
   def set_product
