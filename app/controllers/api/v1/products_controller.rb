@@ -43,15 +43,13 @@ class Api::V1::ProductsController < ApplicationController
   end
 
   def remove_category
-    category = Category.find(params[:category_id])
-    if @product.categories.include?(category)
-      @product.categories.delete(category)
-      render json: { message: "Category removed successfully." }, status: :ok
+    service = Products::RemoveCategory.new(@product, params[:category_id]).call
+  
+    if service[:success]
+      render json: { message: service[:message] }, status: :ok
     else
-      render json: { message: "This category is not associated with the product." }, status: :unprocessable_entity
+      render json: { error: service[:message] }, status: :unprocessable_entity
     end
-  rescue ActiveRecord::RecordNotFound
-    render json: { error: "Product or category not found." }, status: :not_found
   end
   
   
