@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  quiantity: 1
+  quantity: 1
   total_price: 1
   product: one
   client: one
 
 two:
-  quiantity: 1
+  quantity: 1
   total_price: 1
   product: two
   client: two

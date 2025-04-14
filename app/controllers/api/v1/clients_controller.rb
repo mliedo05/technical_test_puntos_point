@@ -38,7 +38,7 @@ class Api::V1::ClientsController < ApplicationController
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
-      render json: { error: service[:message], details: service[:errors] }, status: :unprocessable_entity
+      render json: { error: service[:message]}, status: :unprocessable_entity
     end
   end
 
