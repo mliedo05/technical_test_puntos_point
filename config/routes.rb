@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         end
       end
       resources :clients, only: [:index, :show, :create, :update, :destroy]
+      resources :purchases, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
       post 'auth/login', to: 'auth#login'
       post 'auth/register', to: 'auth#register'
