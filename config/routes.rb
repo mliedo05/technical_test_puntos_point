@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
+  devise_for :clients
+  require 'sidekiq/web'
   namespace :api do
     namespace :v1 do
       resources :products, only: [:index, :show, :create, :update, :destroy] do
