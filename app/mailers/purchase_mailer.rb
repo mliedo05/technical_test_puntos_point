@@ -28,4 +28,21 @@ class PurchaseMailer < ApplicationMailer
       BODY
       )
   end
+
+  def daily_report_email(admin, report)
+    mail(
+      to: admin.email,
+      subject: "Reporte diario de compras - #{Date.yesterday.strftime('%d/%m/%Y')}",
+      body: <<~BODY
+        Hola #{admin.name},
+
+        Este es el reporte de compras de #{Date.yesterday.strftime('%d/%m/%Y')}:
+
+        #{report}
+
+        Saludos,
+        Tu App
+      BODY
+    )
+  end
 end

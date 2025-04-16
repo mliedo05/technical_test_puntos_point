@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Sidekiq::Web => '/sidekiq' if Rails.env.development?
   namespace :api do
     namespace :v1 do
       resources :products, only: [:index, :show, :create, :update, :destroy] do

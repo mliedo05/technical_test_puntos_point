@@ -30,6 +30,12 @@ gem 'sendgrid-ruby'
 gem 'dotenv-rails', groups: [:development, :test]
 gem "net-http"
 
+# reporteria diaria
+gem 'sidekiq'
+gem 'whenever', require: false
+
+
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
