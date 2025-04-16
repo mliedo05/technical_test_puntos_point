@@ -23,7 +23,6 @@ class Api::V1::ClientsController < ApplicationController
     end
   end
 
-  # PUT /api/v1/clients/:id
   def update
     service = Clients::Update.new(@client, client_params).call
     if service[:success]
