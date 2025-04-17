@@ -1,5 +1,6 @@
 class Products::Update
   attr_reader :params
+
   def initialize(product, params)
     @product = product
     @params = params
@@ -24,7 +25,7 @@ class Products::Update
   def success_response(product)
     {
       success: true,
-      message: "Product successfully updated.",
+      message: 'Product successfully updated.',
       data: product
     }
   end
@@ -32,7 +33,7 @@ class Products::Update
   def failure_response(product)
     {
       success: false,
-      message: "Failed to update product.",
+      message: 'Failed to update product.',
       errors: product.errors.full_messages
     }
   end

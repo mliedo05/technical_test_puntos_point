@@ -17,7 +17,7 @@ class Clients::Update
   def success_response(client)
     {
       success: true,
-      message: "Client successfully updated.",
+      message: 'Client successfully updated.',
       data: client
     }
   end
@@ -25,7 +25,7 @@ class Clients::Update
   def failure_response(client)
     {
       success: false,
-      message: "Failed to update client.",
+      message: 'Failed to update client.',
       errors: client.errors.full_messages
     }
   end

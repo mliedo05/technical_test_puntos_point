@@ -1,7 +1,7 @@
 class Api::V1::ProductsController < ApplicationController
-  before_action :authenticate_user_from_token!, only: %i[ update destroy create remove_category ] 
-  before_action :set_product, only: %i[ show update destroy remove_category ]
-  
+  before_action :authenticate_user_from_token!, only: %i[update destroy create remove_category]
+  before_action :set_product, only: %i[show update destroy remove_category]
+
   def index
     products = Product.all
     render json: products, status: :ok
@@ -9,9 +9,9 @@ class Api::V1::ProductsController < ApplicationController
 
   def show
     if @product
-      render json: @product.as_json(include: { categories: { only: [:id, :name] } }), status: :ok
+      render json: @product.as_json(include: { categories: { only: %i[id name] } }), status: :ok
     else
-      render json: { error: "Product not found" }, status: :not_found
+      render json: { error: 'Product not found' }, status: :not_found
     end
   end
 
@@ -38,21 +38,19 @@ class Api::V1::ProductsController < ApplicationController
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
-      render json: { error: service[:message]}, status: :unprocessable_entity
+      render json: { error: service[:message] }, status: :unprocessable_entity
     end
   end
 
   def remove_category
     service = Products::RemoveCategory.new(@product, params[:category_id]).call
-  
+
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
       render json: { error: service[:message] }, status: :unprocessable_entity
     end
   end
-  
-  
 
   private
 
@@ -62,9 +60,8 @@ class Api::V1::ProductsController < ApplicationController
 
   def set_product
     @product = Product.find_by(id: params[:id])
-    unless @product
-      render json: { error: "product not found" }, status: :not_found
-    end
-  end
+    return if @product
 
+    render json: { error: 'product not found' }, status: :not_found
+  end
 end

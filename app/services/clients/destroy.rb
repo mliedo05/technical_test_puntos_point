@@ -22,7 +22,7 @@ class Clients::Destroy
   def client_not_found_response
     {
       success: false,
-      message: "Client not found.",
+      message: 'Client not found.',
       data: nil
     }
   end
@@ -30,7 +30,7 @@ class Clients::Destroy
   def success_response
     {
       success: true,
-      message: "Client successfully deleted.",
+      message: 'Client successfully deleted.',
       data: @client
     }
   end
@@ -38,7 +38,7 @@ class Clients::Destroy
   def failure_response
     {
       success: false,
-      message: "Failed to delete client.",
+      message: 'Failed to delete client.',
       errors: @client.errors.full_messages
     }
   end

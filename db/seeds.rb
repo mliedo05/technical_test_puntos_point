@@ -5,37 +5,37 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "🌱 Seed iniciado..."
+puts '🌱 Seed iniciado...'
 
 # Limpiar datos anteriores
 [Admin, Client, Category, Product, Purchase, ProductCategory].each(&:destroy_all)
 
 # Crear Admins
-puts "Creando Admins..."
+puts 'Creando Admins...'
 admins = 10.times.map do |i|
   Admin.create!(
     name: "Admin #{i + 1}",
     email: "admin#{i + 1}@example.com",
-    password: "password",
-    password_confirmation: "password"
+    password: 'password',
+    password_confirmation: 'password'
   )
 end
 
 # Crear Clients
-puts "Creando Clients..."
+puts 'Creando Clients...'
 clients = 50.times.map do |i|
   Client.create!(
     name: "Client #{i + 1}",
     email: "client#{i + 1}@example.com",
     phone: "555-12#{format('%03d', i)}",
     address: "Calle Falsa #{i + 1}",
-    password: "password",
-    password_confirmation: "password"
+    password: 'password',
+    password_confirmation: 'password'
   )
 end
 
 # Crear Categorías
-puts "Creando Categorías..."
+puts 'Creando Categorías...'
 categories = 20.times.map do |i|
   Category.create!(
     name: "Categoría #{i + 1}",
@@ -45,7 +45,7 @@ categories = 20.times.map do |i|
 end
 
 # Crear Productos
-puts "Creando Productos..."
+puts 'Creando Productos...'
 products = 100.times.map do |i|
   product = Product.create!(
     name: "Producto #{i + 1}",
@@ -61,7 +61,7 @@ products = 100.times.map do |i|
 end
 
 # Crear Compras
-puts "Creando Compras..."
+puts 'Creando Compras...'
 200.times do
   client = clients.sample
   product = products.sample
@@ -75,7 +75,7 @@ puts "Creando Compras..."
   )
 end
 
-puts "✅ Seed finalizado con éxito con:"
+puts '✅ Seed finalizado con éxito con:'
 puts "- #{Admin.count} Admins"
 puts "- #{Client.count} Clients"
 puts "- #{Category.count} Categorías"

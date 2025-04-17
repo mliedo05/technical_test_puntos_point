@@ -17,7 +17,7 @@ class Categories::Update
   def success_response(category)
     {
       success: true,
-      message: "category successfully updated.",
+      message: 'category successfully updated.',
       data: category
     }
   end
@@ -25,7 +25,7 @@ class Categories::Update
   def failure_response(category)
     {
       success: false,
-      message: "Failed to update category.",
+      message: 'Failed to update category.',
       errors: category.errors.full_messages
     }
   end

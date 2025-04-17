@@ -7,7 +7,6 @@ class Purchase < ApplicationRecord
 
   before_validation :calculate_total_price
 
-
   private
 
   def calculate_total_price

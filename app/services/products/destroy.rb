@@ -22,7 +22,7 @@ class Products::Destroy
   def product_not_found_response
     {
       success: false,
-      message: "product not found.",
+      message: 'product not found.',
       data: nil
     }
   end
@@ -30,7 +30,7 @@ class Products::Destroy
   def success_response
     {
       success: true,
-      message: "product successfully deleted.",
+      message: 'product successfully deleted.',
       data: @product
     }
   end
@@ -38,7 +38,7 @@ class Products::Destroy
   def failure_response
     {
       success: false,
-      message: "Failed to delete product.",
+      message: 'Failed to delete product.',
       errors: @product.errors.full_messages
     }
   end

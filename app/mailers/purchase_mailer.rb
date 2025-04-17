@@ -13,20 +13,20 @@ class PurchaseMailer < ApplicationMailer
       cc: cc_admins.pluck(:email),
       subject: "¡Primera compra del producto #{@product.name}!",
       body: <<~BODY
-      ¡Hola #{creator.name}!
+        ¡Hola #{creator.name}!
 
-      Se ha realizado la primera compra del producto: #{@product.name}
+        Se ha realizado la primera compra del producto: #{@product.name}
 
-      Detalles de la compra:
-      - Cliente: #{@client.name}
-      - Cantidad: #{@purchase.quantity}
-      - Total pagado: $#{@purchase.total_price}
+        Detalles de la compra:
+        - Cliente: #{@client.name}
+        - Cantidad: #{@purchase.quantity}
+        - Total pagado: $#{@purchase.total_price}
 
-      ¡Felicitaciones!
+        ¡Felicitaciones!
 
-      - Tu equipo de la app
+        - Tu equipo de la app
       BODY
-      )
+    )
   end
 
   def daily_report_email(admin, report)

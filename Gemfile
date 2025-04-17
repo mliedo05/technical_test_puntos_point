@@ -27,16 +27,18 @@ gem 'devise-jwt'
 gem 'groupdate'
 
 # gem send mails
+gem 'dotenv-rails', groups: %i[development test]
+gem 'net-http'
 gem 'sendgrid-ruby'
-gem 'dotenv-rails', groups: [:development, :test]
-gem "net-http"
 
 # reporteria diaria
 gem 'sidekiq'
 gem 'whenever', require: false
 
-
-
+gem 'factory_bot_rails'
+gem 'faker'
+gem 'rspec-rails'
+gem 'rubocop', '~> 1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -46,7 +48,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
@@ -56,6 +58,5 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
