@@ -24,6 +24,7 @@ gem 'puma', '~> 3.11'
 
 gem 'devise'
 gem 'devise-jwt'
+gem 'groupdate'
 
 # gem send mails
 gem 'sendgrid-ruby'
