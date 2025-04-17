@@ -1,24 +1,103 @@
-# README
+Proyecto - technical_test_puntos_point
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este es un proyecto desarrollado con Ruby on Rails. A continuación, se encuentran las instrucciones necesarias para levantar el servidor y ejecutar la aplicación localmente.
 
-Things you may want to cover:
+Requisitos
+Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
 
-* Ruby version
+Ruby: 2.7.7
 
-* System dependencies
+Rails: 5.2.8.1
 
-* Configuration
+PostgreSQL: Asegúrate de tener PostgreSQL instalado y en ejecución en tu sistema.
 
-* Database creation
+Node.js y Yarn: Se necesita para gestionar los activos estáticos.
 
-* Database initialization
+Bundler: Usado para gestionar las dependencias de Ruby.
 
-* How to run the test suite
+Instrucciones para levantar el servidor
+1. Clonar el repositorio
+Primero, clona el repositorio desde GitHub:
 
-* Services (job queues, cache servers, search engines, etc.)
+git clone git@github.com:mliedo05/technical_test_puntos_point.git
+cd technical_test_puntos_point
 
-* Deployment instructions
+2. Instalar las dependencias
 
-* ...
+bundle install
+
+3. Configurar la base de datos
+
+rails db:create
+rails db:migrate
+rails db:seed
+
+4. Iniciar el servidor
+
+rails server
+
+5. Ejecutar pruebas
+
+bundle exec rspec
+
+Tecnologías utilizadas
+Este proyecto utiliza las siguientes tecnologías:
+
+Ruby 2.7.7
+
+Rails 5.2.8.1
+
+PostgreSQL
+
+RSpec para pruebas
+
+Sidekiq para procesamiento en segundo plano
+
+Devise para autenticación
+
+Sendgrid para envío de correos electrónicos
+
+
+Gemas utilizadas
+
+Rails: ~> 5.2.8, >= 5.2.8.1
+
+PostgreSQL: pg, >= 0.18, < 2.0
+
+Puma: ~> 3.11
+
+Devise: Para autenticación de usuarios
+
+Devise JWT: Para autenticación JWT
+
+Groupdate: Para realizar operaciones con fechas
+
+SendGrid: Para el envío de correos electrónicos
+
+Dotenv Rails: Para la gestión de variables de entorno
+
+Net-HTTP: Para realizar peticiones HTTP
+
+Sidekiq: Para procesamiento en segundo plano
+
+Whenever: Para la gestión de tareas programadas
+
+RuboCop: Para análisis estático de código
+
+RSpec Rails: Para pruebas en Rails
+
+FactoryBot Rails: Para la creación de datos de prueba
+
+Faker: Para generar datos falsos
+
+Bootsnap: Para reducir el tiempo de arranque
+
+Byebug: Para depuración en desarrollo
+
+Listen: Para la detección de cambios en el sistema de archivos
+
+Spring: Para acelerar el tiempo de arranque en desarrollo
+
+Spring Watcher Listen: Para la vigilancia de cambios en el sistema de archivos
+
+TZInfo Data: Para zonas horarias en sistemas Windows

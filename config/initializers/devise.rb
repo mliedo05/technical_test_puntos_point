@@ -324,5 +324,4 @@ Devise.setup do |config|
   end
 
   config.navigational_formats = []
-
 end
