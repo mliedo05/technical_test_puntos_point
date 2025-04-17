@@ -21,21 +21,21 @@ class Products::RemoveCategory
   def success_response
     {
       success: true,
-      message: "Category removed successfully."
+      message: 'Category removed successfully.'
     }
   end
 
   def not_associated_response
     {
       success: false,
-      message: "This category is not associated with the product."
+      message: 'This category is not associated with the product.'
     }
   end
 
   def not_found_response
     {
       success: false,
-      message: "Category not found."
+      message: 'Category not found.'
     }
   end
 end

@@ -20,5 +20,5 @@
 # Learn more: http://github.com/javan/whenever
 
 every 1.day, at: '2:00 am' do
-  runner "DailyPurchaseReportJob.perform_later"
+  runner 'DailyPurchaseReportJob.perform_later'
 end

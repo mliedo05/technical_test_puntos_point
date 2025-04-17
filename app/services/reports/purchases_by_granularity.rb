@@ -15,18 +15,17 @@ class Reports::PurchasesByGranularity
 
     case params[:granularity]
     when 'hour'
-      group_format = "%Y-%m-%d %H:00"
+      group_format = '%Y-%m-%d %H:00'
     when 'day'
-      group_format = "%Y-%m-%d"
+      group_format = '%Y-%m-%d'
     when 'week'
-      group_format = "IYYY-IW"
+      group_format = 'IYYY-IW'
     when 'year'
-      group_format = "%Y"
+      group_format = '%Y'
     else
-      return { error: "Granularity no válida. Usa: hour, day, week, year." }
+      return { error: 'Granularity no válida. Usa: hour, day, week, year.' }
     end
 
     purchases.group("TO_CHAR(purchases.created_at, '#{group_format}')").count
   end
-
 end

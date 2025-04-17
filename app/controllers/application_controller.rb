@@ -18,5 +18,5 @@ class ApplicationController < ActionController::API
     else
       render json: { error: 'Token not provided' }, status: :unauthorized
     end
-  end  
+  end
 end

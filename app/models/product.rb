@@ -7,6 +7,6 @@ class Product < ApplicationRecord
   has_many :purchases
 
   normalize_name :name
-  
+
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 end

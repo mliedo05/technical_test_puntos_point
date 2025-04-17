@@ -1,5 +1,6 @@
 class Products::Create
-  attr_reader :params 
+  attr_reader :params
+
   def initialize(params)
     @params = params
   end
@@ -20,12 +21,12 @@ class Products::Create
   def product_exists?
     normalized_name = params[:name].to_s.strip.downcase.capitalize
     @existing_product = Product.find_by(name: normalized_name)
-  end  
+  end
 
   def product_exists_response
     {
       success: false,
-      message: "A product with this name already exists.",
+      message: 'A product with this name already exists.',
       data: @existing_product
     }
   end
@@ -33,7 +34,7 @@ class Products::Create
   def success_response(product)
     {
       success: true,
-      message: "Product created successfully.",
+      message: 'Product created successfully.',
       data: product
     }
   end
@@ -41,7 +42,7 @@ class Products::Create
   def failure_response(product)
     {
       success: false,
-      message: "Failed to create product.",
+      message: 'Failed to create product.',
       errors: product.errors.full_messages
     }
   end

@@ -22,7 +22,7 @@ class Categories::Destroy
   def category_not_found_response
     {
       success: false,
-      message: "category not found.",
+      message: 'category not found.',
       data: nil
     }
   end
@@ -30,7 +30,7 @@ class Categories::Destroy
   def success_response
     {
       success: true,
-      message: "category successfully deleted.",
+      message: 'category successfully deleted.',
       data: @category
     }
   end
@@ -38,7 +38,7 @@ class Categories::Destroy
   def failure_response
     {
       success: false,
-      message: "Failed to delete category.",
+      message: 'Failed to delete category.',
       errors: @category.errors.full_messages
     }
   end

@@ -19,7 +19,7 @@ class Purchases::Update
   def success_response(purchase)
     {
       success: true,
-      message: "Purchase successfully updated.",
+      message: 'Purchase successfully updated.',
       data: purchase
     }
   end
@@ -27,7 +27,7 @@ class Purchases::Update
   def failure_response(purchase)
     {
       success: false,
-      message: "Failed to update purchase.",
+      message: 'Failed to update purchase.',
       errors: purchase.errors.full_messages
     }
   end

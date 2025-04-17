@@ -1,7 +1,7 @@
 class Api::V1::AuthController < ApplicationController
   def login
     user = find_user_by_email(params[:email])
-    
+
     if user&.valid_password?(params[:password])
       render json: { token: generate_jwt_token(user) }, status: :ok
     else

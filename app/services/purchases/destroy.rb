@@ -22,7 +22,7 @@ class Purchases::Destroy
   def purchase_not_found_response
     {
       success: false,
-      message: "purchase not found.",
+      message: 'purchase not found.',
       data: nil
     }
   end
@@ -30,7 +30,7 @@ class Purchases::Destroy
   def success_response
     {
       success: true,
-      message: "purchase successfully deleted.",
+      message: 'purchase successfully deleted.',
       data: @purchase
     }
   end
@@ -38,7 +38,7 @@ class Purchases::Destroy
   def failure_response
     {
       success: false,
-      message: "Failed to delete purchase.",
+      message: 'Failed to delete purchase.',
       errors: @purchase.errors.full_messages
     }
   end

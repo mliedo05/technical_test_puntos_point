@@ -1,5 +1,6 @@
 class Clients::Create
   attr_reader :params
+
   def initialize(params)
     @params = params
   end
@@ -15,7 +16,6 @@ class Clients::Create
     end
   end
 
-
   def client_exists?
     @existing_client = Client.find_by(email: params[:email])
   end
@@ -23,7 +23,7 @@ class Clients::Create
   def client_exists_response
     {
       success: false,
-      message: "A client with this email already exists.",
+      message: 'A client with this email already exists.',
       data: @existing_client
     }
   end
@@ -31,7 +31,7 @@ class Clients::Create
   def success_response(client)
     {
       success: true,
-      message: "Client created successfully.",
+      message: 'Client created successfully.',
       data: client
     }
   end
@@ -39,7 +39,7 @@ class Clients::Create
   def failure_response(client)
     {
       success: false,
-      message: "Failed to create client.",
+      message: 'Failed to create client.',
       errors: client.errors.full_messages
     }
   end

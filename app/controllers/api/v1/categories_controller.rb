@@ -1,7 +1,7 @@
 class Api::V1::CategoriesController < ApplicationController
-  before_action :authenticate_user_from_token!, only: %i[ update destroy create ] 
-  before_action :set_category, only: %i[ show update destroy ]
-  
+  before_action :authenticate_user_from_token!, only: %i[update destroy create]
+  before_action :set_category, only: %i[show update destroy]
+
   def index
     categories = Category.all
     render json: categories, status: :ok
@@ -34,7 +34,7 @@ class Api::V1::CategoriesController < ApplicationController
     if service[:success]
       render json: { message: service[:message] }, status: :ok
     else
-      render json: { error: service[:message]}, status: :unprocessable_entity
+      render json: { error: service[:message] }, status: :unprocessable_entity
     end
   end
 
@@ -46,9 +46,8 @@ class Api::V1::CategoriesController < ApplicationController
 
   def set_category
     @category = Category.find_by(id: params[:id])
-    unless @category
-      render json: { error: "Category not found" }, status: :not_found
-    end
-  end
+    return if @category
 
+    render json: { error: 'Category not found' }, status: :not_found
+  end
 end
