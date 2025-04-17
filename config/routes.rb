@@ -11,8 +11,14 @@ Rails.application.routes.draw do
       resources :clients, only: [:index, :show, :create, :update, :destroy]
       resources :purchases, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
+      
       post 'auth/login', to: 'auth#login'
       post 'auth/register', to: 'auth#register'
+      
+      get 'reports/top_products_by_category', to: 'reports#top_products_by_category'
+      get 'reports/top_earning_products_by_category', to: 'reports#top_earning_products_by_category'
+      get 'reports/filtered_purchases', to: 'reports#filtered_purchases'
+      get 'reports/purchases_by_granularity', to: 'reports#purchases_by_granularity'
     end
   end
 end
